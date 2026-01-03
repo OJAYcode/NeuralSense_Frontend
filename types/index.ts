@@ -40,13 +40,23 @@ export interface VoiceAnalysisResult {
 export type StressLevel = "low" | "moderate" | "high";
 
 export interface StressAnalysisResult {
+  id?: string;
   sessionId: string;
   stressLevel: StressLevel;
   confidence: number;
-  faceAnalysis: FaceAnalysisResult;
-  voiceAnalysis: VoiceAnalysisResult;
-  feedback: string;
-  timestamp: string;
+  overallStressScore?: number;
+  message?: string;
+  feedback?: string;
+  timestamp?: string;
+  breakdown?: {
+    facialScore: number;
+    voiceScore: number;
+    facialWeight: number;
+    voiceWeight: number;
+  };
+  // Legacy fields (may still be returned by some endpoints)
+  faceAnalysis?: FaceAnalysisResult;
+  voiceAnalysis?: VoiceAnalysisResult;
 }
 
 export interface HistorySession {

@@ -8,6 +8,7 @@ import type {
   StressAnalysisResult,
   ConsentState,
   StressLevel,
+  HistorySession,
 } from "@/types";
 import { apiClient } from "./api";
 
@@ -176,7 +177,7 @@ export const useSessionStore = create<SessionStore>((set, get) => ({
  * Manages stress session history
  */
 interface HistoryStore {
-  sessions: StressAnalysisResult[];
+  sessions: HistorySession[];
   isLoading: boolean;
   error: string | null;
   fetchHistory: () => Promise<void>;
@@ -191,7 +192,7 @@ export const useHistoryStore = create<HistoryStore>((set) => ({
     try {
       set({ isLoading: true, error: null });
       const history = await apiClient.getHistory();
-      set({ sessions: history as any, isLoading: false });
+      set({ sessions: history, isLoading: false });
     } catch (error: any) {
       set({
         error: error.message || "Failed to fetch history",

@@ -16,7 +16,7 @@ import {
 import { useHistoryStore, useAuthStore } from "@/lib/store";
 import StressBadge from "@/components/StressBadge";
 import Loader from "@/components/Loader";
-import type { StressLevel } from "@/types";
+import type { StressLevel, HistorySession } from "@/types";
 
 export default function HistoryPage() {
   const router = useRouter();
@@ -304,9 +304,9 @@ export default function HistoryPage() {
                   Session History
                 </h2>
                 <div className="space-y-4">
-                  {sessions.map((session) => (
+                  {sessions.map((session, index) => (
                     <div
-                      key={session.id}
+                      key={session.sessionId || `session-${index}`}
                       className="flex items-center justify-between p-4 bg-calm-50 rounded-lg hover:bg-calm-100 transition-colors"
                     >
                       <div className="flex-1">

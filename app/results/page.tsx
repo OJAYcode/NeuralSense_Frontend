@@ -250,7 +250,9 @@ function ResultsContent() {
               <div>
                 <p className="text-sm text-calm-600">Session Date</p>
                 <p className="font-semibold text-calm-900">
-                  {new Date(result.timestamp).toLocaleString()}
+                  {result.timestamp
+                    ? new Date(result.timestamp).toLocaleString()
+                    : new Date().toLocaleString()}
                 </p>
               </div>
               <div>
