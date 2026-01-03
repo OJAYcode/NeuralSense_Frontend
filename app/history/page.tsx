@@ -306,7 +306,7 @@ export default function HistoryPage() {
                 <div className="space-y-4">
                   {sessions.map((session, index) => (
                     <div
-                      key={session.sessionId || `session-${index}`}
+                      key={session.id || `session-${index}`}
                       className="flex items-center justify-between p-4 bg-calm-50 rounded-lg hover:bg-calm-100 transition-colors"
                     >
                       <div className="flex-1">
