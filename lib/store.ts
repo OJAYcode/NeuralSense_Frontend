@@ -52,6 +52,13 @@ export const useAuthStore = create<AuthStore>()(
     }),
     {
       name: "neuralsense-auth",
+      onRehydrateStorage: () => (state) => {
+        // Restore token to API client after rehydration
+        if (state?.token) {
+          apiClient.setToken(state.token);
+          console.log("Token restored to API client");
+        }
+      },
     }
   )
 );
@@ -191,9 +198,12 @@ export const useHistoryStore = create<HistoryStore>((set) => ({
   fetchHistory: async () => {
     try {
       set({ isLoading: true, error: null });
+      console.log("Fetching history...");
       const history = await apiClient.getHistory();
+      console.log("History fetched:", history);
       set({ sessions: history, isLoading: false });
     } catch (error: any) {
+      console.error("Failed to fetch history:", error);
       set({
         error: error.message || "Failed to fetch history",
         isLoading: false,

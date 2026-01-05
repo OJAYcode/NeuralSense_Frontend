@@ -109,7 +109,7 @@ class ApiClient {
       console.error("Network error - no response from server:", error.request);
       return {
         message:
-          "Cannot connect to backend server at http://localhost:5001. Please ensure the backend is running.",
+          `Cannot connect to backend server at ${this.client.defaults.baseURL}. Please ensure the backend is running.`,
         code: "NETWORK_ERROR",
       };
     } else {

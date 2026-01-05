@@ -20,7 +20,7 @@ import type { StressLevel, HistorySession } from "@/types";
 
 export default function HistoryPage() {
   const router = useRouter();
-  const { isAuthenticated, user } = useAuthStore();
+  const { isAuthenticated, user, clearAuth } = useAuthStore();
   const { sessions, isLoading, error, fetchHistory } = useHistoryStore();
 
   useEffect(() => {
@@ -85,6 +85,15 @@ export default function HistoryPage() {
             >
               New Session
             </Link>
+            <button
+              onClick={() => {
+                clearAuth();
+                router.push("/auth/login");
+              }}
+              className="px-4 py-2 bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
+            >
+              Logout
+            </button>
           </div>
         </div>
       </nav>

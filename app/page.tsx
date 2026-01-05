@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/store";
 
 /**
@@ -9,7 +10,8 @@ import { useAuthStore } from "@/lib/store";
  * Main entry point with app introduction and CTA
  */
 export default function HomePage() {
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, user, clearAuth } = useAuthStore();
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-calm-50 via-white to-primary-50">
@@ -26,12 +28,23 @@ export default function HomePage() {
           </div>
           <div className="flex items-center gap-4">
             {isAuthenticated ? (
-              <Link
-                href="/session"
-                className="px-4 py-2 text-primary-600 font-medium hover:text-primary-700"
-              >
-                Dashboard
-              </Link>
+              <>
+                <Link
+                  href="/session"
+                  className="px-4 py-2 text-primary-600 font-medium hover:text-primary-700"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={() => {
+                    clearAuth();
+                    router.push("/auth/login");
+                  }}
+                  className="px-6 py-2 bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
+                >
+                  Logout
+                </button>
+              </>
             ) : (
               <>
                 <Link

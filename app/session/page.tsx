@@ -14,7 +14,7 @@ type Step = "start" | "face" | "voice" | "analyzing";
 export default function SessionPage() {
   const router = useRouter();
   const { hasGivenConsent } = useConsentStore();
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, clearAuth } = useAuthStore();
   const { currentSession, isAnalyzing, error, startSession, resetSession } =
     useSessionStore();
 
@@ -172,6 +172,17 @@ export default function SessionPage() {
             >
               New Session
             </button>
+            {isAuthenticated && (
+              <button
+                onClick={() => {
+                  clearAuth();
+                  router.push("/auth/login");
+                }}
+                className="px-4 py-2 bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
+              >
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </nav>

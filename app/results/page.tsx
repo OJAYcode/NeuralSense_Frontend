@@ -18,8 +18,8 @@ import type { StressAnalysisResult } from "@/types";
 
 function ResultsContent() {
   const router = useRouter();
+  const { isAuthenticated, clearAuth } = useAuthStore();
   const searchParams = useSearchParams();
-  const { isAuthenticated } = useAuthStore();
   const sessionId = searchParams.get("sessionId");
   const facialScore = parseFloat(searchParams.get("facialScore") || "0");
   const voiceScore = parseFloat(searchParams.get("voiceScore") || "0");
@@ -114,6 +114,17 @@ function ResultsContent() {
             >
               New Session
             </Link>
+            {isAuthenticated && (
+              <button
+                onClick={() => {
+                  clearAuth();
+                  router.push("/auth/login");
+                }}
+                className="px-4 py-2 bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
+              >
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </nav>
