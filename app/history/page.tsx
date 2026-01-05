@@ -68,20 +68,20 @@ export default function HistoryPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-calm-50 via-white to-primary-50">
       {/* Header */}
-      <nav className="container mx-auto px-6 py-6 border-b border-calm-200 bg-white/80 backdrop-blur-sm">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform">
+      <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 border-b border-calm-200 bg-white/80 backdrop-blur-sm">
+        <div className="flex justify-between items-center flex-wrap gap-2">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-base sm:text-xl group-hover:scale-105 transition-transform">
               NS
             </div>
-            <span className="text-2xl font-bold text-calm-900">
+            <span className="text-lg sm:text-2xl font-bold text-calm-900">
               NeuralSense
             </span>
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
             <Link
               href="/session"
-              className="px-4 py-2 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-colors"
+              className="px-3 sm:px-4 py-2 text-sm sm:text-base bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-colors"
             >
               New Session
             </Link>
@@ -90,7 +90,7 @@ export default function HistoryPage() {
                 clearAuth();
                 router.push("/auth/login");
               }}
-              className="px-4 py-2 bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
+              className="px-3 sm:px-4 py-2 text-sm sm:text-base bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
             >
               Logout
             </button>

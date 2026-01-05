@@ -149,26 +149,26 @@ export default function SessionPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-calm-50 via-white to-primary-50">
       {/* Header */}
-      <nav className="container mx-auto px-6 py-6 border-b border-calm-200">
-        <div className="flex justify-between items-center">
+      <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 border-b border-calm-200">
+        <div className="flex justify-between items-center flex-wrap gap-2">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-3xl">🧠</span>
-            <span className="text-2xl font-bold text-calm-900">
+            <span className="text-2xl sm:text-3xl">🧠</span>
+            <span className="text-lg sm:text-2xl font-bold text-calm-900">
               NeuralSense
             </span>
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
             {isAuthenticated && (
               <Link
                 href="/history"
-                className="px-4 py-2 text-calm-600 font-medium hover:text-calm-800"
+                className="px-3 sm:px-4 py-2 text-sm sm:text-base text-calm-600 font-medium hover:text-calm-800"
               >
                 History
               </Link>
             )}
             <button
               onClick={handleRestart}
-              className="px-4 py-2 text-calm-600 font-medium hover:text-calm-800"
+              className="px-3 sm:px-4 py-2 text-sm sm:text-base text-calm-600 font-medium hover:text-calm-800"
             >
               New Session
             </button>
@@ -178,7 +178,7 @@ export default function SessionPage() {
                   clearAuth();
                   router.push("/auth/login");
                 }}
-                className="px-4 py-2 bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
+                className="px-3 sm:px-4 py-2 text-sm sm:text-base bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
               >
                 Logout
               </button>
@@ -188,7 +188,7 @@ export default function SessionPage() {
       </nav>
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <div className="max-w-4xl mx-auto">
           {/* Progress Steps */}
           <div className="mb-12">

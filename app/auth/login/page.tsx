@@ -40,22 +40,25 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-calm-50 to-white flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-calm-50 to-white flex items-center justify-center px-4 sm:px-6 py-8 sm:py-12">
       <div className="max-w-md w-full">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-3 mb-4 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform shadow-lg">
+        <div className="text-center mb-6 sm:mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 sm:gap-3 mb-4 group"
+          >
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg sm:text-xl group-hover:scale-105 transition-transform shadow-lg">
               NS
             </div>
-            <span className="text-2xl font-bold text-calm-900">
+            <span className="text-xl sm:text-2xl font-bold text-calm-900">
               NeuralSense
             </span>
           </Link>
-          <h1 className="text-3xl font-bold text-calm-900 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-calm-900 mb-2">
             Welcome Back
           </h1>
-          <p className="text-calm-600">
+          <p className="text-sm sm:text-base text-calm-600">
             Sign in to your account or continue as guest
           </p>
         </div>
@@ -63,7 +66,7 @@ export default function LoginPage() {
         {/* Guest Mode Button */}
         <button
           onClick={handleGuestMode}
-          className="w-full mb-6 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+          className="w-full mb-4 sm:mb-6 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
         >
           Continue as Guest
           <svg

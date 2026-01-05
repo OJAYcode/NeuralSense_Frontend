@@ -108,8 +108,7 @@ class ApiClient {
       // Request made but no response
       console.error("Network error - no response from server:", error.request);
       return {
-        message:
-          `Cannot connect to backend server at ${this.client.defaults.baseURL}. Please ensure the backend is running.`,
+        message: `Cannot connect to backend server at ${this.client.defaults.baseURL}. Please ensure the backend is running.`,
         code: "NETWORK_ERROR",
       };
     } else {

@@ -16,22 +16,22 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-calm-50 via-white to-primary-50">
       {/* Navigation */}
-      <nav className="container mx-auto px-6 py-6 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-calm-100">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform shadow-md">
+      <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-calm-100">
+        <div className="flex justify-between items-center flex-wrap gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 group">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-base sm:text-xl group-hover:scale-105 transition-transform shadow-md">
               NS
             </div>
-            <span className="text-2xl font-bold text-calm-900">
+            <span className="text-lg sm:text-2xl font-bold text-calm-900">
               NeuralSense
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             {isAuthenticated ? (
               <>
                 <Link
                   href="/session"
-                  className="px-4 py-2 text-primary-600 font-medium hover:text-primary-700"
+                  className="px-3 sm:px-4 py-2 text-sm sm:text-base text-primary-600 font-medium hover:text-primary-700"
                 >
                   Dashboard
                 </Link>
@@ -40,7 +40,7 @@ export default function HomePage() {
                     clearAuth();
                     router.push("/auth/login");
                   }}
-                  className="px-6 py-2 bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
+                  className="px-4 sm:px-6 py-2 text-sm sm:text-base bg-calm-100 text-calm-700 font-medium rounded-lg hover:bg-calm-200 transition-colors"
                 >
                   Logout
                 </button>
@@ -49,13 +49,13 @@ export default function HomePage() {
               <>
                 <Link
                   href="/auth/login"
-                  className="px-4 py-2 text-calm-700 font-medium hover:text-calm-900"
+                  className="px-3 sm:px-4 py-2 text-sm sm:text-base text-calm-700 font-medium hover:text-calm-900"
                 >
                   Login
                 </Link>
                 <Link
                   href="/auth/register"
-                  className="px-6 py-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all shadow-md hover:shadow-lg"
+                  className="px-4 sm:px-6 py-2 text-sm sm:text-base bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all shadow-md hover:shadow-lg"
                 >
                   Sign Up
                 </Link>
@@ -66,16 +66,16 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-20 text-center">
+      <section className="container mx-auto px-4 sm:px-6 py-12 sm:py-20 text-center">
         <div className="max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-5xl md:text-6xl font-bold text-calm-900 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-calm-900 mb-4 sm:mb-6">
             Understand Your Stress,
             <br />
             <span className="text-primary-600">
               Take Control of Your Well-being
             </span>
           </h1>
-          <p className="text-xl text-calm-600 mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-calm-600 mb-6 sm:mb-8 leading-relaxed px-4">
             NeuralSense uses advanced AI to analyze facial expressions and voice
             patterns, providing you with supportive insights about your stress
             levels.
@@ -84,7 +84,7 @@ export default function HomePage() {
           {/* CTA Button */}
           <Link
             href="/consent"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:from-primary-600 hover:to-primary-700 hover:shadow-xl transform hover:scale-105 transition-all"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-base sm:text-lg font-semibold rounded-lg shadow-lg hover:from-primary-600 hover:to-primary-700 hover:shadow-xl transform hover:scale-105 transition-all"
           >
             Start Stress Check
             <svg
@@ -103,7 +103,7 @@ export default function HomePage() {
           </Link>
 
           {/* Disclaimer */}
-          <p className="text-sm text-calm-500 mt-6 max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm text-calm-500 mt-4 sm:mt-6 max-w-2xl mx-auto px-4">
             NeuralSense provides supportive insights and does not replace
             professional evaluation.
           </p>
@@ -111,13 +111,13 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section className="container mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold text-calm-900 text-center mb-12">
+      <section className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <h2 className="text-2xl sm:text-3xl font-bold text-calm-900 text-center mb-8 sm:mb-12">
           How It Works
         </h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {/* Step 1 */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-calm-100">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+          \n {/* Step 1 */}\n{" "}
+          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-calm-100">
             <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center mb-6">
               <svg
                 className="w-8 h-8 text-primary-600"
@@ -147,7 +147,6 @@ export default function HomePage() {
               expressions to detect stress indicators.
             </p>
           </div>
-
           {/* Step 2 */}
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-calm-100">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-6">
@@ -173,7 +172,6 @@ export default function HomePage() {
               tone to assess stress levels.
             </p>
           </div>
-
           {/* Step 3 */}
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-calm-100">
             <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-6">

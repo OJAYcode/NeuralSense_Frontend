@@ -125,15 +125,15 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({
           minDuration
         );
 
+        // Use >= for validation (10 seconds or more is valid)
         if (actualDuration >= minDuration) {
+          console.log("Recording valid, calling onRecordingComplete");
           onRecordingComplete(audioBlob);
         } else {
-          setError(
-            `Recording too short. Please record for at least ${minDuration} seconds.`
-          );
-          onError?.(
-            `Recording too short. Minimum duration is ${minDuration} seconds.`
-          );
+          const errorMsg = `Recording too short. Please record for at least ${minDuration} seconds. You recorded ${actualDuration} seconds.`;
+          console.log(errorMsg);
+          setError(errorMsg);
+          onError?.(errorMsg);
         }
       };
 
@@ -150,7 +150,15 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({
 
         // Auto-stop at max duration
         if (durationRef.current >= maxDuration) {
-          stopRecording();
+          // Stop without calling stopRecording to avoid dependency issues
+          if (mediaRecorderRef.current) {
+            mediaRecorderRef.current.stop();
+            setIsRecording(false);
+            setIsPaused(false);
+            clearInterval(timerRef.current!);
+            timerRef.current = null;
+            setAudioLevel(0);
+          }
         }
       }, 1000);
     } catch (err: any) {
