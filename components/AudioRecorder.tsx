@@ -122,8 +122,22 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({
           "Recording stopped. Duration:",
           actualDuration,
           "Min required:",
-          minDuration
+          minDuration,
+          "Blob size:",
+          audioBlob.size,
+          "bytes",
+          "Chunks collected:",
+          chunksRef.current.length
         );
+
+        // Check if blob is empty or too small (less than 1KB is likely corrupt)
+        if (audioBlob.size < 1000) {
+          const errorMsg = `Recording failed. Audio file too small (${audioBlob.size} bytes). Please try again.`;
+          console.error(errorMsg);
+          setError(errorMsg);
+          onError?.(errorMsg);
+          return;
+        }
 
         // Use >= for validation (10 seconds or more is valid)
         if (actualDuration >= minDuration) {
@@ -138,7 +152,9 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({
       };
 
       mediaRecorderRef.current = mediaRecorder;
-      mediaRecorder.start();
+      // Request data every 1000ms to ensure chunks are collected
+      // This is crucial for getting a valid audio blob
+      mediaRecorder.start(1000);
       setIsRecording(true);
       setDuration(0);
       durationRef.current = 0;

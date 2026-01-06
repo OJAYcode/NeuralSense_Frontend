@@ -201,7 +201,7 @@ class ApiClient {
    * Start a new stress detection session
    */
   async startSession(): Promise<Session> {
-    const response = await this.client.post<any>("/session/start");
+    const response = await this.client.post<any>("/sessions/start");
 
     // Backend returns {session: {...}} not the session directly
     const sessionData = response.data.session || response.data;
@@ -221,7 +221,7 @@ class ApiClient {
    */
   async getHistory(): Promise<HistorySession[]> {
     const response = await this.client.get<HistorySession[]>(
-      "/session/history"
+      "/sessions/history"
     );
     return response.data;
   }
